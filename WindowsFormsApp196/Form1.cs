@@ -22,5 +22,18 @@ namespace WindowsFormsApp196
                 MessageBox.Show(exc.Message);
             }
         }
+
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Ventanas.EditarProducto _x = new Ventanas.EditarProducto();
+                _x.ShowDialog();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
     }
 }

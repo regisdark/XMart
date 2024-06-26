@@ -1,6 +1,8 @@
 ﻿using BusinessLogic.Clases_Personalizadas;
 using Modelo;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 namespace BusinessLogic.Metodos 
 {
     public class Productos : ManejadorModelo<Producto>
@@ -25,6 +27,37 @@ namespace BusinessLogic.Metodos
 			{
 				throw exc;
 			}
+        }
+
+        public List<Producto> ObtenerProductos(int IdDepto)
+        {
+            try
+            {
+                return GetContext.PRODUCTO.Where(w => w.ID_DEPARTAMENTO == IdDepto).Select(s => new Producto
+                {
+                    ID = s.ID,
+                    DESCRIPCION = s.DESCRIPCION,
+                    ESTATUS = s.ESTATUS,
+                    PRECIO = s.PRECIO
+                }).ToList();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public Producto ObtenerProducto(string id)
+        {
+            try
+            {
+                var _elemento = GetContext.PRODUCTO.FirstOrDefault(d => d.ID == id);
+                return _elemento == null ? new Producto() { } : new Producto() { ID = _elemento.ID, DESCRIPCION = _elemento.DESCRIPCION, ESTATUS = _elemento.ESTATUS, PRECIO = _elemento.PRECIO, ID_DEPARTAMENTO = _elemento.ID_DEPARTAMENTO };   
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
     }
 }

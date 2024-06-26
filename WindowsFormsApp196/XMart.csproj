@@ -70,6 +70,12 @@
     <Compile Include="Ventanas\CrearProducto.Designer.cs">
       <DependentUpon>CrearProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\EditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\EditarProducto.Designer.cs">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -81,9 +87,13 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Ventanas\CrearProducto.resx">
       <DependentUpon>CrearProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\EditarProducto.resx">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -108,6 +118,15 @@
       <Project>{1c696428-68c7-46ea-91a6-96b2adb46c32}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_43cebbb9-0c03-4417-ba47-efae259bc1ae.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_10e2ec78-3fb0-4fde-9f33-ed823d4a8b7c.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_c07ebe8e-3765-4893-8473-79dcbe4df5da.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

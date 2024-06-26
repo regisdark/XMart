@@ -3,15 +3,15 @@ using Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace BusinessLogic.Metodos 
+namespace BusinessLogic.Metodos
 {
     public class Productos : ManejadorModelo<Producto>
     {
         public bool GuardarProducto(Producto producto)
         {
-			try
-			{
-                GetContext.PRODUCTO.Add(new PRODUCTO ()
+            try
+            {
+                GetContext.PRODUCTO.Add(new PRODUCTO()
                 {
                     ESTATUS = producto.ESTATUS,
                     DESCRIPCION = producto.DESCRIPCION,
@@ -23,10 +23,10 @@ namespace BusinessLogic.Metodos
                 GetContext.SaveChanges();
                 return true;
             }
-			catch (Exception exc)
-			{
-				throw exc;
-			}
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
 
         public List<Producto> ObtenerProductos(int IdDepto)
@@ -52,7 +52,29 @@ namespace BusinessLogic.Metodos
             try
             {
                 var _elemento = GetContext.PRODUCTO.FirstOrDefault(d => d.ID == id);
-                return _elemento == null ? new Producto() { } : new Producto() { ID = _elemento.ID, DESCRIPCION = _elemento.DESCRIPCION, ESTATUS = _elemento.ESTATUS, PRECIO = _elemento.PRECIO, ID_DEPARTAMENTO = _elemento.ID_DEPARTAMENTO };   
+                return _elemento == null ? new Producto() { } : new Producto() { ID = _elemento.ID, DESCRIPCION = _elemento.DESCRIPCION, ESTATUS = _elemento.ESTATUS, PRECIO = _elemento.PRECIO, ID_DEPARTAMENTO = _elemento.ID_DEPARTAMENTO };
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public bool EditarProducto(Producto producto)
+        {
+            try
+            {
+                if (GetContext.PRODUCTO.FirstOrDefault(d => d.ID == producto.ID) != null)
+                {
+                    var _registro = GetContext.PRODUCTO.FirstOrDefault(d => d.ID == producto.ID);
+                    _registro.PRECIO = producto.PRECIO;
+                    _registro.ID_DEPARTAMENTO = producto.ID_DEPARTAMENTO;
+                    _registro.DESCRIPCION = producto.DESCRIPCION;
+                    _registro.ESTATUS = producto.ESTATUS;
+                }
+
+                GetContext.SaveChanges();
+                return true;
             }
             catch (Exception exc)
             {

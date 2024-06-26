@@ -47,6 +47,7 @@
             this.PRECIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRIPCIÓN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTATUS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProductos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -105,6 +106,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBox1);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.label3);
@@ -161,7 +163,7 @@
             0,
             65536});
             this.nmPrecio.Name = "nmPrecio";
-            this.nmPrecio.Size = new System.Drawing.Size(157, 20);
+            this.nmPrecio.Size = new System.Drawing.Size(201, 20);
             this.nmPrecio.TabIndex = 6;
             this.nmPrecio.Value = new decimal(new int[] {
             1,
@@ -195,6 +197,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Guardar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -246,6 +249,16 @@
             this.ESTATUS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.ESTATUS.Width = 90;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(306, 51);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(61, 17);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Estatus";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // EditarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -289,5 +302,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PRECIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRIPCIÓN;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ESTATUS;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

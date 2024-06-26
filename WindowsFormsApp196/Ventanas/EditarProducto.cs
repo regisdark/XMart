@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp196.Ventanas
@@ -76,6 +70,7 @@ namespace WindowsFormsApp196.Ventanas
                 txtDesc.Text = _registro.DESCRIPCION;
                 cmbEdicionDpto.SelectedValue = _registro.ID_DEPARTAMENTO;
                 nmPrecio.Value = _registro.PRECIO;
+                checkBox1.Checked = _registro.ESTATUS;
             }
             catch (Exception exc)
             {
@@ -90,6 +85,7 @@ namespace WindowsFormsApp196.Ventanas
                 txtDesc.Text = string.Empty;
                 cmbEdicionDpto.SelectedIndex = 0;
                 nmPrecio.Value = (decimal)0.1;
+                checkBox1.Checked = false;
             }
             catch (Exception exc)
             {
@@ -102,6 +98,30 @@ namespace WindowsFormsApp196.Ventanas
             try
             {
                 LimpiarDetalle();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var _nuevoDpto = (BusinessLogic.Clases_Personalizadas.Departamento)cmbDpto.SelectedItem;
+                if (new BusinessLogic.Metodos.Productos().EditarProducto(new BusinessLogic.Clases_Personalizadas.Producto()
+                {
+                    ESTATUS = checkBox1.Checked,
+                    DESCRIPCION = txtDesc.Text,
+                    ID_DEPARTAMENTO = _nuevoDpto.ID,
+                    PRECIO = nmPrecio.Value,
+                    ID = dgProductos.SelectedRows[0].Cells[0].Value.ToString()
+                }))
+                {
+                    LimpiarDetalle();
+                    CargaInicial();
+                }
             }
             catch (Exception exc)
             {

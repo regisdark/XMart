@@ -70,6 +70,12 @@
     <Compile Include="Ventanas\CrearProducto.Designer.cs">
       <DependentUpon>CrearProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\CrearVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\CrearVenta.Designer.cs">
+      <DependentUpon>CrearVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\EditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="Ventanas\CrearProducto.resx">
       <DependentUpon>CrearProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\CrearVenta.resx">
+      <DependentUpon>CrearVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\EditarProducto.resx">
       <DependentUpon>EditarProducto.cs</DependentUpon>

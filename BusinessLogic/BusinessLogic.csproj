@@ -52,10 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases_Personalizadas\Departamento.cs" />
+    <Compile Include="Clases_Personalizadas\Enumeradores.cs" />
     <Compile Include="Clases_Personalizadas\Producto.cs" />
+    <Compile Include="Clases_Personalizadas\Usuario.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Metodos\Departamentos.cs" />
     <Compile Include="Metodos\Productos.cs" />
+    <Compile Include="Metodos\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

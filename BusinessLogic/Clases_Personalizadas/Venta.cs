@@ -9,5 +9,7 @@
         public string ID_USUARIO { get; set; }
         public bool ESTATUS { get; set; }
         public System.Collections.Generic.List<SubVenta> SUB_VENTAS { get; set; }
+
+        public string NOMBRE_USUARIO { get; set; }
     }
 }

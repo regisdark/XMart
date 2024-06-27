@@ -83,5 +83,18 @@ namespace WindowsFormsApp196
                 throw exc;
             }
         }
+
+        private void verVentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Ventanas.VerVenta _x = new Ventanas.VerVenta();
+                _x.ShowDialog();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
     }
 }

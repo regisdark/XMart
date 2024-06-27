@@ -82,6 +82,12 @@
     <Compile Include="Ventanas\EditarProducto.Designer.cs">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\VerVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\VerVenta.Designer.cs">
+      <DependentUpon>VerVenta.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\EditarProducto.resx">
       <DependentUpon>EditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\VerVenta.resx">
+      <DependentUpon>VerVenta.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

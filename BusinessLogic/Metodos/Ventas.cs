@@ -3,8 +3,6 @@ using Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-
 namespace BusinessLogic.Metodos
 {
     public class Ventas : ManejadorModelo<VENTA>
@@ -16,7 +14,6 @@ namespace BusinessLogic.Metodos
                 var Contexto = GetContext;
                 using (var _transaccion = Contexto.Database.BeginTransaction())
                 {
-                    //calculos base para la entidad: Venta
                     int _cantidadProductos = 0;
                     decimal _importeTotal = decimal.Zero;
 
@@ -76,12 +73,29 @@ namespace BusinessLogic.Metodos
                 Random _r = new Random();
                 for (int i = 0; i < _cantidad; i++)
                 {
-                    var _indice = _r.Next(_productos.Count());
-                    var elemento = _productos.ElementAt(_indice);
+                    var elemento = _productos.ElementAt(_r.Next(_productos.Count()));
                     lista.Add(new GeneradoresData.ListadoOperacionesAutomaticas() { ID_PRODUCTO = elemento.id, PRODUCTO = elemento.producto, CANTIDAD = _r.Next(1, 50) });
                 }
 
                 return lista;
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public List<Venta> ObtenerVenta(DateTime fecha)
+        {
+            try
+            {
+                return GetContext.VENTA.Where(s => s.FECHA.Year == fecha.Year && s.FECHA.Month == fecha.Month && s.FECHA.Day == fecha.Day).Select(x => new Venta()
+                {
+                    ID = x.ID,
+                    IMPORTE_TOTAL = x.IMPORTE_TOTAL,
+                    CANT_PRODUCTOS = x.CANT_PRODUCTOS,
+                    NOMBRE_USUARIO = x.USUARIO.USUARIO1
+                }).ToList();
             }
             catch (Exception exc)
             {

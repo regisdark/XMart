@@ -29,6 +29,7 @@ namespace WindowsFormsApp196
         {
             try
             {
+                catalogosToolStripMenuItem.Enabled = false;
                 var _usuario = new BusinessLogic.Metodos.Usuarios().ObtenerUsuario(System.Security.Principal.WindowsIdentity.GetCurrent().Name, "51390396E3FE636190FEE7C6A203E8B904C86E01");
                 if(_usuario.HasValue)
                     switch (_usuario)

@@ -39,7 +39,23 @@ namespace BusinessLogic.Metodos
                     DESCRIPCION = s.DESCRIPCION,
                     ESTATUS = s.ESTATUS,
                     PRECIO = s.PRECIO
-                }).ToList();
+                }).OrderBy(o => o.DESCRIPCION).ToList();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
+        }
+
+        public List<Producto> ObtenerProductosCombo(int IdDepto)
+        {
+            try
+            {
+                return GetContext.PRODUCTO.Where(w => w.ID_DEPARTAMENTO == IdDepto && w.ESTATUS).Select(s => new Producto
+                {
+                    ID = s.ID,
+                    DESCRIPCION = s.DESCRIPCION
+                }).OrderBy(o => o.DESCRIPCION).ToList();
             }
             catch (Exception exc)
             {

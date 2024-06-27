@@ -23,6 +23,17 @@
           <Property Name="ID_DEPARTAMENTO" Type="int" Nullable="false" />
           <Property Name="ESTATUS" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="SUB_VENTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_VENTA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_PRODUCTO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CANTIDAD" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IMPORTE" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="TIPO_USUARIO">
           <Key>
             <PropertyRef Name="ID_TIPO_USUARIO" />
@@ -41,6 +52,17 @@
           <Property Name="ID_TIPO" Type="int" Nullable="false" />
           <Property Name="ESTATUS" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IMPORTE_TOTAL" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CANT_PRODUCTOS" Type="int" Nullable="false" />
+          <Property Name="FECHA" Type="datetime" Nullable="false" />
+          <Property Name="ID_USUARIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ESTATUS" Type="bit" Nullable="false" />
+        </EntityType>
         <Association Name="FK_PRODUCTO_DEPARTAMENTO">
           <End Role="DEPARTAMENTO" Type="Self.DEPARTAMENTO" Multiplicity="1" />
           <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
@@ -50,6 +72,18 @@
             </Principal>
             <Dependent Role="PRODUCTO">
               <PropertyRef Name="ID_DEPARTAMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SUB_VENTA_VENTA">
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="1" />
+          <End Role="SUB_VENTA" Type="Self.SUB_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SUB_VENTA">
+              <PropertyRef Name="ID_VENTA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -65,18 +99,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VENTA_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="VENTA" Type="Self.VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="ID_USUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="XMARTModelStoreContainer">
           <EntitySet Name="DEPARTAMENTO" EntityType="Self.DEPARTAMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SUB_VENTA" EntityType="Self.SUB_VENTA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPO_USUARIO" EntityType="Self.TIPO_USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VENTA" EntityType="Self.VENTA" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_PRODUCTO_DEPARTAMENTO" Association="Self.FK_PRODUCTO_DEPARTAMENTO">
             <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <AssociationSet Name="FK_SUB_VENTA_VENTA" Association="Self.FK_SUB_VENTA_VENTA">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="SUB_VENTA" EntitySet="SUB_VENTA" />
+          </AssociationSet>
           <AssociationSet Name="FK_USUARIO_TIPO_USUARIO" Association="Self.FK_USUARIO_TIPO_USUARIO">
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTA_USUARIO" Association="Self.FK_VENTA_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="VENTA" EntitySet="VENTA" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -86,15 +142,25 @@
         <EntityContainer Name="XMARTEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DEPARTAMENTO" EntityType="XMARTModel.DEPARTAMENTO" />
           <EntitySet Name="PRODUCTO" EntityType="XMARTModel.PRODUCTO" />
+          <EntitySet Name="SUB_VENTA" EntityType="XMARTModel.SUB_VENTA" />
           <EntitySet Name="TIPO_USUARIO" EntityType="XMARTModel.TIPO_USUARIO" />
           <EntitySet Name="USUARIO" EntityType="XMARTModel.USUARIO" />
+          <EntitySet Name="VENTA" EntityType="XMARTModel.VENTA" />
           <AssociationSet Name="FK_PRODUCTO_DEPARTAMENTO" Association="XMARTModel.FK_PRODUCTO_DEPARTAMENTO">
             <End Role="DEPARTAMENTO" EntitySet="DEPARTAMENTO" />
             <End Role="PRODUCTO" EntitySet="PRODUCTO" />
           </AssociationSet>
+          <AssociationSet Name="FK_SUB_VENTA_VENTA" Association="XMARTModel.FK_SUB_VENTA_VENTA">
+            <End Role="VENTA" EntitySet="VENTA" />
+            <End Role="SUB_VENTA" EntitySet="SUB_VENTA" />
+          </AssociationSet>
           <AssociationSet Name="FK_USUARIO_TIPO_USUARIO" Association="XMARTModel.FK_USUARIO_TIPO_USUARIO">
             <End Role="TIPO_USUARIO" EntitySet="TIPO_USUARIO" />
             <End Role="USUARIO" EntitySet="USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VENTA_USUARIO" Association="XMARTModel.FK_VENTA_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="VENTA" EntitySet="VENTA" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="DEPARTAMENTO">
@@ -117,6 +183,18 @@
           <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="DEPARTAMENTO" Relationship="XMARTModel.FK_PRODUCTO_DEPARTAMENTO" FromRole="PRODUCTO" ToRole="DEPARTAMENTO" />
         </EntityType>
+        <EntityType Name="SUB_VENTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_VENTA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_PRODUCTO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CANTIDAD" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IMPORTE" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="VENTA" Relationship="XMARTModel.FK_SUB_VENTA_VENTA" FromRole="SUB_VENTA" ToRole="VENTA" />
+        </EntityType>
         <EntityType Name="TIPO_USUARIO">
           <Key>
             <PropertyRef Name="ID_TIPO_USUARIO" />
@@ -136,6 +214,20 @@
           <Property Name="ID_TIPO" Type="Int32" Nullable="false" />
           <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TIPO_USUARIO" Relationship="XMARTModel.FK_USUARIO_TIPO_USUARIO" FromRole="USUARIO" ToRole="TIPO_USUARIO" />
+          <NavigationProperty Name="VENTA" Relationship="XMARTModel.FK_VENTA_USUARIO" FromRole="USUARIO" ToRole="VENTA" />
+        </EntityType>
+        <EntityType Name="VENTA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IMPORTE_TOTAL" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="CANT_PRODUCTOS" Type="Int32" Nullable="false" />
+          <Property Name="FECHA" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_USUARIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ESTATUS" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SUB_VENTA" Relationship="XMARTModel.FK_SUB_VENTA_VENTA" FromRole="VENTA" ToRole="SUB_VENTA" />
+          <NavigationProperty Name="USUARIO" Relationship="XMARTModel.FK_VENTA_USUARIO" FromRole="VENTA" ToRole="USUARIO" />
         </EntityType>
         <Association Name="FK_PRODUCTO_DEPARTAMENTO">
           <End Type="XMARTModel.DEPARTAMENTO" Role="DEPARTAMENTO" Multiplicity="1" />
@@ -149,6 +241,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SUB_VENTA_VENTA">
+          <End Type="XMARTModel.VENTA" Role="VENTA" Multiplicity="1" />
+          <End Type="XMARTModel.SUB_VENTA" Role="SUB_VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VENTA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SUB_VENTA">
+              <PropertyRef Name="ID_VENTA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_USUARIO_TIPO_USUARIO">
           <End Type="XMARTModel.TIPO_USUARIO" Role="TIPO_USUARIO" Multiplicity="1" />
           <End Type="XMARTModel.USUARIO" Role="USUARIO" Multiplicity="*" />
@@ -158,6 +262,18 @@
             </Principal>
             <Dependent Role="USUARIO">
               <PropertyRef Name="ID_TIPO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VENTA_USUARIO">
+          <End Type="XMARTModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="XMARTModel.VENTA" Role="VENTA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VENTA">
+              <PropertyRef Name="ID_USUARIO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -187,6 +303,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SUB_VENTA">
+            <EntityTypeMapping TypeName="XMARTModel.SUB_VENTA">
+              <MappingFragment StoreEntitySet="SUB_VENTA">
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="IMPORTE" ColumnName="IMPORTE" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="ID_PRODUCTO" ColumnName="ID_PRODUCTO" />
+                <ScalarProperty Name="ID_VENTA" ColumnName="ID_VENTA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TIPO_USUARIO">
             <EntityTypeMapping TypeName="XMARTModel.TIPO_USUARIO">
               <MappingFragment StoreEntitySet="TIPO_USUARIO">
@@ -203,6 +331,18 @@
                 <ScalarProperty Name="ID_TIPO" ColumnName="ID_TIPO" />
                 <ScalarProperty Name="CONTRASENIA" ColumnName="CONTRASENIA" />
                 <ScalarProperty Name="USUARIO1" ColumnName="USUARIO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VENTA">
+            <EntityTypeMapping TypeName="XMARTModel.VENTA">
+              <MappingFragment StoreEntitySet="VENTA">
+                <ScalarProperty Name="ESTATUS" ColumnName="ESTATUS" />
+                <ScalarProperty Name="ID_USUARIO" ColumnName="ID_USUARIO" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="CANT_PRODUCTOS" ColumnName="CANT_PRODUCTOS" />
+                <ScalarProperty Name="IMPORTE_TOTAL" ColumnName="IMPORTE_TOTAL" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

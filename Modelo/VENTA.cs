@@ -12,22 +12,23 @@ namespace Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class USUARIO
+    public partial class VENTA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public USUARIO()
+        public VENTA()
         {
-            this.VENTA = new HashSet<VENTA>();
+            this.SUB_VENTA = new HashSet<SUB_VENTA>();
         }
     
         public string ID { get; set; }
-        public string USUARIO1 { get; set; }
-        public string CONTRASENIA { get; set; }
-        public int ID_TIPO { get; set; }
+        public decimal IMPORTE_TOTAL { get; set; }
+        public int CANT_PRODUCTOS { get; set; }
+        public System.DateTime FECHA { get; set; }
+        public string ID_USUARIO { get; set; }
         public bool ESTATUS { get; set; }
     
-        public virtual TIPO_USUARIO TIPO_USUARIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VENTA> VENTA { get; set; }
+        public virtual ICollection<SUB_VENTA> SUB_VENTA { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

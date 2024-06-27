@@ -1,8 +1,7 @@
-﻿using System;
+﻿using BusinessLogic.Metodos;
+using System;
 using System.Linq;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-
 namespace WindowsFormsApp196.Ventanas
 {
     public partial class CrearProducto : Form
@@ -53,7 +52,7 @@ namespace WindowsFormsApp196.Ventanas
             {
                 txtDesc.Text = string.Empty;
                 cmbDpto.SelectedIndex = 0;
-                nmPrecio.Value = 0;
+                nmPrecio.Value = (decimal)0.1;
             }
             catch (Exception exc)
             {

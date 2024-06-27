@@ -17,6 +17,7 @@ namespace WindowsFormsApp196.Ventanas
             try
             {
                 cmbDpto.Items.Clear();
+                cmbEdicionDpto.Items.Clear();
                 var _dptos = new BusinessLogic.Metodos.Departamentos().ObtenerDeparamentosCombo();
                 if (_dptos != null && _dptos.Any())
                 {
@@ -109,7 +110,7 @@ namespace WindowsFormsApp196.Ventanas
         {
             try
             {
-                var _nuevoDpto = (BusinessLogic.Clases_Personalizadas.Departamento)cmbDpto.SelectedItem;
+                var _nuevoDpto = (BusinessLogic.Clases_Personalizadas.Departamento)cmbEdicionDpto.SelectedItem;
                 if (new BusinessLogic.Metodos.Productos().EditarProducto(new BusinessLogic.Clases_Personalizadas.Producto()
                 {
                     ESTATUS = checkBox1.Checked,

@@ -62,10 +62,16 @@
       <DependentUpon>XMARTmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SUB_VENTA.cs">
+      <DependentUpon>XMARTmodel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TIPO_USUARIO.cs">
       <DependentUpon>XMARTmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="USUARIO.cs">
+      <DependentUpon>XMARTmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VENTA.cs">
       <DependentUpon>XMARTmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="XMARTmodel.Context.cs">

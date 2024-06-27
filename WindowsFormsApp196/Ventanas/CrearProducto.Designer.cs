@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrearProducto));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbDpto = new System.Windows.Forms.ComboBox();
-            this.nmPrecio = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtDesc = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nmPrecio = new System.Windows.Forms.NumericUpDown();
+            this.cmbDpto = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.bntGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -57,23 +57,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacóon General";
             // 
-            // label1
+            // txtDesc
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Departamento:";
+            this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDesc.Location = new System.Drawing.Point(89, 56);
+            this.txtDesc.MaxLength = 150;
+            this.txtDesc.Name = "txtDesc";
+            this.txtDesc.Size = new System.Drawing.Size(419, 20);
+            this.txtDesc.TabIndex = 5;
             // 
-            // cmbDpto
+            // label3
             // 
-            this.cmbDpto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDpto.FormattingEnabled = true;
-            this.cmbDpto.Location = new System.Drawing.Point(89, 22);
-            this.cmbDpto.Name = "cmbDpto";
-            this.cmbDpto.Size = new System.Drawing.Size(198, 21);
-            this.cmbDpto.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Descripción:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(305, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Precio:";
             // 
             // nmPrecio
             // 
@@ -97,32 +106,23 @@
             0,
             65536});
             // 
-            // label2
+            // cmbDpto
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(305, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Precio:";
+            this.cmbDpto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDpto.FormattingEnabled = true;
+            this.cmbDpto.Location = new System.Drawing.Point(89, 22);
+            this.cmbDpto.Name = "cmbDpto";
+            this.cmbDpto.Size = new System.Drawing.Size(198, 21);
+            this.cmbDpto.TabIndex = 1;
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Descripción:";
-            // 
-            // txtDesc
-            // 
-            this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDesc.Location = new System.Drawing.Point(89, 56);
-            this.txtDesc.MaxLength = 150;
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(419, 20);
-            this.txtDesc.TabIndex = 5;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Departamento:";
             // 
             // bntGuardar
             // 

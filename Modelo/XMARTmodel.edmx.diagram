@@ -7,10 +7,14 @@
       <Diagram DiagramId="9bf5c522bfb246219909b41475421de1" Name="Diagram1">
         <EntityTypeShape EntityType="XMARTModel.DEPARTAMENTO" Width="1.5" PointX="0.75" PointY="5.125" />
         <EntityTypeShape EntityType="XMARTModel.PRODUCTO" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="XMARTModel.TIPO_USUARIO" Width="1.5" PointX="0.75" PointY="1.125" />
-        <EntityTypeShape EntityType="XMARTModel.USUARIO" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="XMARTModel.SUB_VENTA" Width="1.5" PointX="7.5" PointY="1" />
+        <EntityTypeShape EntityType="XMARTModel.TIPO_USUARIO" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="XMARTModel.USUARIO" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="XMARTModel.VENTA" Width="1.5" PointX="5.25" PointY="1" />
         <AssociationConnector Association="XMARTModel.FK_PRODUCTO_DEPARTAMENTO" />
+        <AssociationConnector Association="XMARTModel.FK_SUB_VENTA_VENTA" />
         <AssociationConnector Association="XMARTModel.FK_USUARIO_TIPO_USUARIO" />
+        <AssociationConnector Association="XMARTModel.FK_VENTA_USUARIO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

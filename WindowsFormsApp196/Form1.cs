@@ -34,11 +34,6 @@ namespace WindowsFormsApp196
                 if(_usuario.HasValue)
                     switch (_usuario)
                     {//puedo quitar y poner permisos y accesos a mi gusto, basandome en el tipo de usuario
-                        case (int)eTiposUsuario.CAJERO:
-                            //si es un cajero, le quito el acceso a los catalogos (las reglas de negocio tambien se pueden hacer a nivel de base de datos)
-                            catalogosToolStripMenuItem.Enabled = false;
-                            break;
-
                         case (int)eTiposUsuario.SUPERVISOR:
                             //si es un supervisor, le doy el acceso a los catalogos
                             catalogosToolStripMenuItem.Enabled = true;
@@ -66,7 +61,27 @@ namespace WindowsFormsApp196
 
         private void crearVentaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Ventanas.CrearVenta _x = new Ventanas.CrearVenta();
+                _x.ShowDialog();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
 
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Close();
+            }
+            catch (Exception exc)
+            {
+                throw exc;
+            }
         }
     }
 }

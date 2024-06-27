@@ -27,7 +27,9 @@ namespace Modelo
     
         public virtual DbSet<DEPARTAMENTO> DEPARTAMENTO { get; set; }
         public virtual DbSet<PRODUCTO> PRODUCTO { get; set; }
+        public virtual DbSet<SUB_VENTA> SUB_VENTA { get; set; }
         public virtual DbSet<TIPO_USUARIO> TIPO_USUARIO { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
+        public virtual DbSet<VENTA> VENTA { get; set; }
     }
 }

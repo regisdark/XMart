@@ -1,0 +1,8 @@
+@XMART_Api_HostAddress = http://localhost:5190
+
+GET {{XMART_Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+GET {{XMART_Api_HostAddress}}/ventas/
+Accept: application/json

@@ -14,6 +14,12 @@ namespace Modelo
     
     public partial class PRODUCTO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PRODUCTO()
+        {
+            this.SUB_VENTA = new HashSet<SUB_VENTA>();
+        }
+    
         public string ID { get; set; }
         public string DESCRIPCION { get; set; }
         public decimal PRECIO { get; set; }
@@ -21,5 +27,7 @@ namespace Modelo
         public bool ESTATUS { get; set; }
     
         public virtual DEPARTAMENTO DEPARTAMENTO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SUB_VENTA> SUB_VENTA { get; set; }
     }
 }

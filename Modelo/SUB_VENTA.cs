@@ -21,6 +21,7 @@ namespace Modelo
         public decimal IMPORTE { get; set; }
         public bool ESTATUS { get; set; }
     
+        public virtual PRODUCTO PRODUCTO { get; set; }
         public virtual VENTA VENTA { get; set; }
     }
 }

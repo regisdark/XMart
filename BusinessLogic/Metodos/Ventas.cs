@@ -102,5 +102,22 @@ namespace BusinessLogic.Metodos
                 throw exc;
             }
         }
+
+        public List<Reportes.ReporteDetalleVenta> ObtenerDetalleVenta(string idVenta)
+        {
+            try
+            {
+                return GetContext.SUB_VENTA.AsEnumerable().Where(a => a.ID_VENTA == idVenta).Select(d => new Reportes.ReporteDetalleVenta()
+                {
+                    PRODUCTO = d.PRODUCTO.DESCRIPCION,
+                    CANTIDAD = d.CANTIDAD.ToString(),
+                    PRECIO = d.IMPORTE
+                }).ToList();
+            }
+            catch (Exception exc)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -57,9 +57,20 @@ namespace WindowsFormsApp196.Ventanas
         {
             try
             {
+                if (dtVentas.SelectedRows.Count == 0)
+                    return;
+
                 VisorReportes _forma = new VisorReportes();
                 ReportViewer _reportviewer = _forma.reportViewer1;
                 _reportviewer.LocalReport.DataSources.Clear();
+
+                Reportes.DataSets.DataSetReporteDetalleVenta dataSet = new Reportes.DataSets.DataSetReporteDetalleVenta();
+                var _detalle = new BusinessLogic.Metodos.Ventas().ObtenerDetalleVenta(dtVentas.SelectedRows[0].Cells[0].Value.ToString());
+                if (_detalle != null && _detalle.Any())
+                    foreach (var item in _detalle)
+                        dataSet.DETALLE.Rows.Add(item.PRODUCTO, item.CANTIDAD,item.PRECIO);
+
+                _reportviewer.LocalReport.DataSources.Add(new ReportDataSource("DETALLE", dataSet.DETALLE.Rows));
                 _reportviewer.LocalReport.ReportPath = "C:\\Users\\USER\\source\\repos\\WindowsFormsApp196\\Reportes\\Formatos\\ReporteDetalleVenta.rdlc";
                 _reportviewer.SetDisplayMode(DisplayMode.PrintLayout);
                 _reportviewer.Refresh();

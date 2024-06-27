@@ -41,7 +41,9 @@
             this.NOMBRE_USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CANT_PRODUCTOS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IMPORTE_TOTAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDetalleVenta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtVentas)).BeginInit();
             this.SuspendLayout();
@@ -97,6 +99,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnDetalleVenta);
             this.groupBox2.Location = new System.Drawing.Point(548, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(200, 195);
@@ -161,6 +164,16 @@
             this.IMPORTE_TOTAL.ReadOnly = true;
             this.IMPORTE_TOTAL.Width = 140;
             // 
+            // btnDetalleVenta
+            // 
+            this.btnDetalleVenta.Location = new System.Drawing.Point(6, 26);
+            this.btnDetalleVenta.Name = "btnDetalleVenta";
+            this.btnDetalleVenta.Size = new System.Drawing.Size(180, 23);
+            this.btnDetalleVenta.TabIndex = 0;
+            this.btnDetalleVenta.Text = "Detalle de Venta";
+            this.btnDetalleVenta.UseVisualStyleBackColor = true;
+            this.btnDetalleVenta.Click += new System.EventHandler(this.btnDetalleVenta_Click);
+            // 
             // VerVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +189,7 @@
             this.Text = "Ver Venta";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtVentas)).EndInit();
             this.ResumeLayout(false);
@@ -196,5 +210,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NOMBRE_USUARIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn CANT_PRODUCTOS;
         private System.Windows.Forms.DataGridViewTextBoxColumn IMPORTE_TOTAL;
+        private System.Windows.Forms.Button btnDetalleVenta;
     }
 }

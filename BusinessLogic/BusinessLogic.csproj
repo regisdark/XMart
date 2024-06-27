@@ -58,7 +58,6 @@
     <Compile Include="Clases_Personalizadas\SubVenta.cs" />
     <Compile Include="Clases_Personalizadas\Usuario.cs" />
     <Compile Include="Clases_Personalizadas\Venta.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Metodos\Departamentos.cs" />
     <Compile Include="Metodos\Productos.cs" />
     <Compile Include="Metodos\Usuarios.cs" />
